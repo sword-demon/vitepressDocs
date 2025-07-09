@@ -126,7 +126,17 @@ defineConfig({
       },
       {
         text: "Java",
-        items: [],
+        items: [
+          {
+            text: "SpringBoot",
+            items: [
+              {
+                text: "自定义 API 请求日志切面组件",
+                link: "/java/springboot/log_aop_starter",
+              },
+            ],
+          },
+        ],
       },
       {
         text: "C",
