@@ -12,7 +12,7 @@ hero:
   actions:
     - theme: brand
       text: 开始
-      link: /preface
+      link: /guide/preface
 
 features:
   - icon: 📝

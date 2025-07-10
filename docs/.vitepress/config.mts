@@ -97,52 +97,79 @@ defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav,
 
-    sidebar: [
-      {
-        //分组标题1
-        text: "介绍",
-        collapsed: false,
-        items: [{ text: "前言", link: "/preface" }],
-      },
-      {
-        text: "生活&日常",
-        collapsed: false,
-        items: [{ text: "懒人蜜汁卤鸡翅", link: "/life/chicken" }],
-      },
-      {
-        text: "React",
-        items: [
-          { text: "基础学习", link: "/react/base" },
-          { text: "使用Context保存数据", link: "/react/react_context" },
-        ],
-      },
-      {
-        text: "Electron",
-        items: [],
-      },
-      {
-        text: "Go",
-        items: [],
-      },
-      {
-        text: "Java",
-        items: [
-          {
-            text: "SpringBoot",
-            items: [
-              {
-                text: "自定义 API 请求日志切面组件",
-                link: "/java/springboot/log_aop_starter",
-              },
-            ],
-          },
-        ],
-      },
-      {
-        text: "C",
-        items: [{ text: "开发环境", link: "/c/env" }],
-      },
-    ],
+    sidebar: {
+      "/guide/": [
+        {
+          //分组标题1
+          text: "介绍",
+          collapsed: false,
+          items: [
+            { text: "前言", link: "/guide/preface" },
+            { text: "markdown案例", link: "/guide/markdown-examples" },
+            { text: "api案例", link: "/guide/api-examples" },
+          ],
+        },
+      ],
+      "/life/": [
+        {
+          text: "生活&日常",
+          collapsed: false,
+          items: [{ text: "懒人蜜汁卤鸡翅", link: "/life/chicken" }],
+        },
+      ],
+      "/front/": [
+        {
+          text: "React基础学习",
+          items: [
+            { text: "基础学习", link: "/front/base" },
+            { text: "使用Context保存数据", link: "/front/react_context" },
+          ],
+        },
+        {
+          text: "Electron",
+          items: [],
+        },
+      ],
+      "/backend/": [
+        {
+          text: "Go",
+          items: [
+            {
+              text: "项目",
+              items: [
+                { text: "结构设计", link: "/backend/go/project/structure" },
+              ],
+            },
+          ],
+        },
+        {
+          text: "Java",
+          items: [
+            {
+              text: "SpringBoot",
+              items: [
+                {
+                  text: "自定义 API 请求日志切面组件",
+                  link: "/backend/java/springboot/log_aop_starter",
+                },
+                {
+                  text: "springboot3整合mqtt",
+                  link: "/backend/java/springboot/mqtt",
+                },
+              ],
+            },
+          ],
+        },
+        {
+          text: "C",
+          items: [{ text: "开发环境", link: "/backend/c/env" }],
+        },
+        {
+          text: "杂项",
+          items: [{ text: "终端配置", link: "/backend/terminal/index" }],
+        },
+      ],
+    },
 
     //社交链接
     socialLinks: [
