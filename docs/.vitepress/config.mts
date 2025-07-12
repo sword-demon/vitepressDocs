@@ -146,6 +146,10 @@ defineConfig({
           text: "Java",
           items: [
             {
+              text: "随笔",
+              link: "/backend/java/index",
+            },
+            {
               text: "SpringBoot",
               items: [
                 {
@@ -166,7 +170,10 @@ defineConfig({
         },
         {
           text: "杂项",
-          items: [{ text: "终端配置", link: "/backend/terminal/index" }],
+          items: [
+            { text: "终端配置", link: "/backend/terminal/index" },
+            { text: "mysql8配置", link: "/backend/mysql/index" },
+          ],
         },
       ],
     },
