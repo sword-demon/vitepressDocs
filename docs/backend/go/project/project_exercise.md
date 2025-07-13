@@ -230,3 +230,118 @@ func CmsRouters(r *gin.Engine) {
 
 ```
 
+
+
+### 模型的绑定与验证
+
+在`gin`中,模型绑定和验证是一种方便 HTTP 请求数据的处理和验证的功能
+
+模型绑定指的是将请求中的数据自动绑定到`Go`的结构体,当收到一个包含表单数据,`JSON`数据或者查询字符串的`http`请求时,`gin`可以自动将这些数据解析并绑定到目标结构体中的字段.
+
+
+
+```go
+package services
+
+import (
+	"fmt"
+	"github.com/gin-gonic/gin"
+)
+
+type HelloReq struct {
+	Name string `json:"name" binding:"required"`
+}
+
+type HelloResp struct {
+	Message string `json:"message" binding:"required"`
+}
+
+func (c *CmsApp) Hello(ctx *gin.Context) {
+	var req HelloReq
+	if err := ctx.ShouldBindJSON(&req); err != nil {
+		ctx.JSON(400, gin.H{"error": err.Error()})
+		return
+	}
+	ctx.JSON(200, gin.H{
+		"code": 0,
+		"msg":  "ok",
+		"data": &HelloResp{
+			Message: fmt.Sprintf("hello %s", req.Name),
+		},
+	})
+}
+
+```
+
+```go
+package api
+
+import (
+	"content-system/internal/services"
+
+	"github.com/gin-gonic/gin"
+)
+
+// 路由都会有分组的概念，分组可以让我们更好的管理路由
+
+const (
+	rootPath = "/api/" // 根路径
+)
+
+func CmsRouters(r *gin.Engine) {
+	cmsApp := services.NewCmsApp()
+
+	// 注册中间件
+	session := &SessionAuth{}
+	root := r.Group(rootPath).Use(session.Auth)
+	{
+		// /api/ping
+		root.GET("/ping", cmsApp.Ping)
+		root.GET("/hello", cmsApp.Hello)
+	}
+}
+
+```
+
+
+
+
+
+## 注册流程
+
+```mermaid
+graph TD
+    A[用户] --> B[server api]
+    B --> C[存储]
+    B --> D[密码加密]
+    D --> E[信息校验]
+    E --> F[mysql]
+```
+
+### database tool 的工程实践
+
+新建`script/user.sql`
+
+> 第一版本
+
+```sql
+create database `cms_account`;
+
+use `cms_account`;
+
+create table `account`
+(
+    `id`         bigint(20)   NOT NULL AUTO_INCREMENT COMMENT '主键 id',
+    `user_id`    varchar(64)           DEFAULT '' COMMENT '用户 id',
+    `nickname`   varchar(64)           DEFAULT '' COMMENT '昵称',
+    `password`   varchar(100) NOT NULL,
+    `created_at` timestamp    NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    `updated_at` timestamp    NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (`id`)
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4
+  COLLATE = utf8mb4_unicode_ci;
+```
+
+到你的数据库里进行执行即可.
+
