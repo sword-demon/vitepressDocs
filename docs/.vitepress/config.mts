@@ -138,6 +138,10 @@ defineConfig({
               text: "项目",
               items: [
                 { text: "结构设计", link: "/backend/go/project/structure" },
+                {
+                  text: "工程实践",
+                  link: "/backend/go/project/project_exercise",
+                },
               ],
             },
           ],
