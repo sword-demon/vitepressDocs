@@ -138,6 +138,10 @@ defineConfig({
               text: "claude code proxy",
               link: "/backend/ai/claude_code_proxy",
             },
+            {
+              text: "coze工作流学习",
+              link: "/backend/ai/coze_workflow",
+            },
           ],
         },
         {
@@ -173,6 +177,20 @@ defineConfig({
               link: "/backend/java/index",
             },
             { text: "自定义 Banner", link: "/backend/java/banner" },
+            {
+              text: "javase",
+              collapsed: false,
+              items: [
+                {
+                  text: "1.基础面试题",
+                  link: "/backend/java/javase/interview",
+                },
+              ],
+            },
+            { text: "javaee", collapsed: false, items: [] },
+            { text: "javaweb", collapsed: false, items: [] },
+            { text: "后端工程化", collapsed: false, items: [] },
+            { text: "分布式", collapsed: false, items: [] },
             {
               text: "SpringBoot",
               collapsed: false,
