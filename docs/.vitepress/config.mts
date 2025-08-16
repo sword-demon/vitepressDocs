@@ -132,10 +132,21 @@ defineConfig({
       ],
       "/backend/": [
         {
+          text: "AI",
+          items: [
+            {
+              text: "claude code proxy",
+              link: "/backend/ai/claude_code_proxy",
+            },
+          ],
+        },
+        {
           text: "Go",
+          collapsed: false,
           items: [
             {
               text: "项目",
+              collapsed: false,
               items: [
                 { text: "结构设计", link: "/backend/go/project/structure" },
                 {
@@ -144,17 +155,27 @@ defineConfig({
                 },
               ],
             },
+            {
+              text: "通知平台学习",
+              collapsed: false,
+              items: [
+                { text: "幂等问题", link: "/backend/go/notification/mideng" },
+              ],
+            },
           ],
         },
         {
           text: "Java",
+          collapsed: false,
           items: [
             {
               text: "随笔",
               link: "/backend/java/index",
             },
+            { text: "自定义 Banner", link: "/backend/java/banner" },
             {
               text: "SpringBoot",
+              collapsed: false,
               items: [
                 {
                   text: "自定义 API 请求日志切面组件",
@@ -185,7 +206,6 @@ defineConfig({
     //社交链接
     socialLinks: [
       { icon: "github", link: "https://github.com/sword-demon" },
-      { icon: "twitter", link: "https://twitter.com/" },
       { icon: "discord", link: "https://chat.vitejs.dev/" },
     ],
 
