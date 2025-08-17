@@ -186,6 +186,18 @@ defineConfig({
                   text: "1.基础面试题",
                   link: "/backend/java/javase/interview",
                 },
+                {
+                  text: "for循环练习",
+                  link: "/backend/java/javase/for_exercise",
+                },
+                {
+                  text: "Random",
+                  link: "/backend/java/javase/random",
+                },
+                {
+                  text: "数组",
+                  link: "/backend/java/javase/array",
+                },
               ],
             },
             { text: "javaee", collapsed: false, items: [] },

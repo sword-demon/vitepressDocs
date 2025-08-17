@@ -57,3 +57,25 @@ date: 2025-07-12
 ---
 
 如果要换版本,则通过修改`JAVA_HOME`变量对应的变量值即可
+
+## 操作数组容易出现的问题
+
+### 数组索引越界异常 ArrayIndexOutOfBoundsException
+
+出现问题的原因: 操作的索引超出了数组的索引范围
+
+```
+Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: Index 3 out of bounds for length 3
+	at com.code.day04.Demo01Array.main(Demo01Array.java:15)
+```
+
+### 空指针异常 NullPointerException
+
+原因: 数组为`null`,再操作数组
+
+```java
+int[] arr = new int[3];
+System.out.println(arr.length);
+arr = null;
+System.out.println(arr.length);
+```

@@ -376,3 +376,12 @@ graph LR
 `Stack`: 堆栈类,是`Vector`的子类,先进后出,项目中使用的不多
 
 `Hashtable`: 比`HashMap`多了一个线程安全,项目中一般使用`HashMap`
+
+## Scanner 的next()和nextLine()方法的区别?[个人记录]
+
+`next()`方法,如果输入的内容有空格,遇到空格和回车就结束录入
+
+`nextLine()`方法,遇到回车就结束录入
+
+> 基本上也就考试的时候会遇到
+
