@@ -125,6 +125,7 @@ defineConfig({
             { text: "使用Context保存数据", link: "/front/react_context" },
           ],
         },
+        { text: "Vue3", collapsed: false, items: [] },
         {
           text: "Electron",
           items: [],
@@ -205,6 +206,29 @@ defineConfig({
                 },
               ],
             },
+          ],
+        },
+        {
+          text: "Python",
+          collapsed: false,
+          items: [
+            {
+              text: "pycharm配置代码模版",
+              link: "/backend/python/file_template",
+            },
+            {
+              text: "基础",
+              collapsed: false,
+              items: [
+                {
+                  text: "交互式工具",
+                  link: "/backend/python/base/Interaction",
+                },
+                { text: "输入", link: "/backend/python/base/input" },
+                { text: "运算符", link: "/backend/python/base/operator" },
+              ],
+            },
+            { text: "爬虫", collapsed: false, items: [] },
           ],
         },
         {
