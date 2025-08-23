@@ -143,6 +143,11 @@ defineConfig({
               text: "coze工作流学习",
               link: "/backend/ai/coze_workflow",
             },
+            {
+              text: "chatbox使用",
+              link: "/backend/ai/chatbox_use",
+            },
+            { text: "claude code使用kimi k2", link: "/backend/ai/kimi_k2" },
           ],
         },
         {
