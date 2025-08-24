@@ -153,6 +153,7 @@ defineConfig({
               link: "/backend/ai/cherry_studio_agent_1",
             },
             { text: "自定义 ai 小项目需求文档", link: "/backend/ai/rongyao" },
+            { text: "6A 工作流", link: "/backend/ai/sixAworkflow" },
           ],
         },
         {
