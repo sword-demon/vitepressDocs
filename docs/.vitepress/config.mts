@@ -154,6 +154,7 @@ defineConfig({
             },
             { text: "自定义 ai 小项目需求文档", link: "/backend/ai/rongyao" },
             { text: "6A 工作流", link: "/backend/ai/sixAworkflow" },
+            { text: "Cursor 规则", link: "/backend/ai/cursor_rules" },
           ],
         },
         {
