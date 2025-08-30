@@ -155,6 +155,7 @@ defineConfig({
             { text: "自定义 ai 小项目需求文档", link: "/backend/ai/rongyao" },
             { text: "6A 工作流", link: "/backend/ai/sixAworkflow" },
             { text: "Cursor 规则", link: "/backend/ai/cursor_rules" },
+            { text: "claude code 入门", link: "/backend/ai/claude_code_xin" },
           ],
         },
         {
@@ -253,6 +254,8 @@ defineConfig({
               ],
             },
             { text: "爬虫", collapsed: false, items: [] },
+            { text: "JS 逆向", collapsed: false, items: [] },
+            { text: "安卓逆向", collapsed: false, items: [] },
           ],
         },
         {
