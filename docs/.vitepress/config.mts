@@ -168,6 +168,7 @@ defineConfig({
               text: "coze flowable 小说推文简洁版",
               link: "/backend/ai/agent_remind_code",
             },
+            { text: "BMAD-METHOD", link: "/backend/ai/bmad-method" },
           ],
         },
         {
