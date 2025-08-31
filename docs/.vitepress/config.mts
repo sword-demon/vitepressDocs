@@ -160,6 +160,14 @@ defineConfig({
               text: "claude code 使用技巧",
               link: "/backend/ai/claude_code_tips",
             },
+            {
+              text: "cursor rules推荐",
+              link: "/backend/ai/cursor_rules_example",
+            },
+            {
+              text: "coze flowable 小说推文简洁版",
+              link: "/backend/ai/agent_remind_code",
+            },
           ],
         },
         {
