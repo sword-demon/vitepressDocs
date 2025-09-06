@@ -472,3 +472,17 @@ git push origin main                # 推送到远程仓库
 
 
 
+## 新增的一个MCP：spec-workflow
+
+```json
+{
+  "mcpServers": {
+    "spec-workflow": {
+      "command": "npx",
+      "args": ["-y", "@pimzino/spec-workflow-mcp@latest", "/path/to/your/project"]
+    }
+  }
+}
+```
+
+`/path/to/your/project`：你的项目的地址【绝对路径】
