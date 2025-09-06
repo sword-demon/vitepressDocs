@@ -125,6 +125,10 @@ defineConfig({
             { text: "使用Context保存数据", link: "/front/react_context" },
           ],
         },
+        {
+          text: "React框架",
+          items: [{ text: "Next.js 学习", link: "/front/React/Nextjs" }],
+        },
         { text: "Vue3", collapsed: false, items: [] },
         {
           text: "Electron",
