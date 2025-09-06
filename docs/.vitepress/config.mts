@@ -169,6 +169,10 @@ defineConfig({
               link: "/backend/ai/agent_remind_code",
             },
             { text: "BMAD-METHOD", link: "/backend/ai/bmad-method" },
+            {
+              text: "使用cursor开发案例一",
+              link: "/backend/ai/cursor_zhihu_chrome_extension",
+            },
           ],
         },
         {
