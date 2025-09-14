@@ -177,6 +177,7 @@ defineConfig({
               text: "使用cursor开发案例一",
               link: "/backend/ai/cursor_zhihu_chrome_extension",
             },
+            { text: "n8n+crawl4ai", link: "/backend/ai/n8n_crawl4ai" },
           ],
         },
         {
