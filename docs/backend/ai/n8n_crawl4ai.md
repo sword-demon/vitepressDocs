@@ -1,6 +1,6 @@
 # n8n+crawl4ai
 
-## 安装crawl4ai
+## 安装 crawl4ai
 
 ```bash
 docker pull unclecode/crawl4ai:all-arm64
@@ -38,24 +38,20 @@ INFO:     192.168.215.1:53119 - "GET /mkdocs/ HTTP/1.1" 200 OK
 
 抓取数据的时候还需要参考网站的`robots.txt`
 
-
-
 案例网址：`https://docs.crawl4ai.com/sitemap.xml`
 
-## n8n本地部署安装
+## n8n 本地部署安装
 
 ```bash
 docker volume create n8n_data
 docker run -it --rm --name n8n -p 5678:5678 -v n8n_data:/home/node/.n8n -v ~/Downloads/md:/home/node -e N8N_COMMUNITY_PACKAGES_ALLOW_TOOL_USAGE=true docker.n8n.io/n8nio/n8n
 ```
 
-
-
 ## 搭建工作
 
-1. 选择`on change message`，随便输入一段内容就可以触发节点开始，这里我们输入：`https://docs.crawl4ai.com/sitemap.xml`，方便后续的HTTP请求测试
+1. 选择`on change message`，随便输入一段内容就可以触发节点开始，这里我们输入：`https://docs.crawl4ai.com/sitemap.xml`，方便后续的 HTTP 请求测试
 
-2. 添加一个新节点，输入`HTTP Request`，URL选择上一步的`chatInput`，拖拽过去就行。
+2. 添加一个新节点，输入`HTTP Request`，URL 选择上一步的`chatInput`，拖拽过去就行。
 
    ![image-20250914173130813](../../public/image-20250914173130813.png)
 
@@ -69,109 +65,79 @@ docker run -it --rm --name n8n -p 5678:5678 -v n8n_data:/home/node/.n8n -v ~/Dow
 
    ```json
    [
-   {
-   "loc": 
-   "https://docs.crawl4ai.com/",
-   "lastmod": 
-   "2025-08-09",
-   "changefreq": 
-   "daily"
-   },
-   {
-   "loc": 
-   "https://docs.crawl4ai.com/advanced/adaptive-strategies/",
-   "lastmod": 
-   "2025-08-09",
-   "changefreq": 
-   "daily"
-   },
-   {
-   "loc": 
-   "https://docs.crawl4ai.com/advanced/advanced-features/",
-   "lastmod": 
-   "2025-08-09",
-   "changefreq": 
-   "daily"
-   },
-   {
-   "loc": 
-   "https://docs.crawl4ai.com/advanced/crawl-dispatcher/",
-   "lastmod": 
-   "2025-08-09",
-   "changefreq": 
-   "daily"
-   },
-   {
-   "loc": 
-   "https://docs.crawl4ai.com/advanced/file-downloading/",
-   "lastmod": 
-   "2025-08-09",
-   "changefreq": 
-   "daily"
-   },
-   {
-   "loc": 
-   "https://docs.crawl4ai.com/advanced/hooks-auth/",
-   "lastmod": 
-   "2025-08-09",
-   "changefreq": 
-   "daily"
-   },
-   {
-   "loc": 
-   "https://docs.crawl4ai.com/advanced/identity-based-crawling/",
-   "lastmod": 
-   "2025-08-09",
-   "changefreq": 
-   "daily"
-   },
-   {
-   "loc": 
-   "https://docs.crawl4ai.com/advanced/lazy-loading/",
-   "lastmod": 
-   "2025-08-09",
-   "changefreq": 
-   "daily"
-   },
-   {
-   "loc": 
-   "https://docs.crawl4ai.com/advanced/multi-url-crawling/",
-   "lastmod": 
-   "2025-08-09",
-   "changefreq": 
-   "daily"
-   },
-   {
-   "loc": 
-   "https://docs.crawl4ai.com/advanced/network-console-capture/",
-   "lastmod": 
-   "2025-08-09",
-   "changefreq": 
-   "daily"
-   }
+     {
+       "loc": "https://docs.crawl4ai.com/",
+       "lastmod": "2025-08-09",
+       "changefreq": "daily"
+     },
+     {
+       "loc": "https://docs.crawl4ai.com/advanced/adaptive-strategies/",
+       "lastmod": "2025-08-09",
+       "changefreq": "daily"
+     },
+     {
+       "loc": "https://docs.crawl4ai.com/advanced/advanced-features/",
+       "lastmod": "2025-08-09",
+       "changefreq": "daily"
+     },
+     {
+       "loc": "https://docs.crawl4ai.com/advanced/crawl-dispatcher/",
+       "lastmod": "2025-08-09",
+       "changefreq": "daily"
+     },
+     {
+       "loc": "https://docs.crawl4ai.com/advanced/file-downloading/",
+       "lastmod": "2025-08-09",
+       "changefreq": "daily"
+     },
+     {
+       "loc": "https://docs.crawl4ai.com/advanced/hooks-auth/",
+       "lastmod": "2025-08-09",
+       "changefreq": "daily"
+     },
+     {
+       "loc": "https://docs.crawl4ai.com/advanced/identity-based-crawling/",
+       "lastmod": "2025-08-09",
+       "changefreq": "daily"
+     },
+     {
+       "loc": "https://docs.crawl4ai.com/advanced/lazy-loading/",
+       "lastmod": "2025-08-09",
+       "changefreq": "daily"
+     },
+     {
+       "loc": "https://docs.crawl4ai.com/advanced/multi-url-crawling/",
+       "lastmod": "2025-08-09",
+       "changefreq": "daily"
+     },
+     {
+       "loc": "https://docs.crawl4ai.com/advanced/network-console-capture/",
+       "lastmod": "2025-08-09",
+       "changefreq": "daily"
+     }
    ]
    ```
 
-8. 添加一个`Limit`节点，来限制抓取的数量，这里我们输入2个就行
-9. 再添加一个`Loop Over Items`，来处理循环，这里我们每次循环只处理一个`url`，`Batch Size`输入1即可。
-10. 将循环的一个处理节点换成`HTTP Request`，换成`Post`请求，地址换成：`http://host.docker.internal:11235/crawl`，这是我们使用docker部署的crawl4ai提供的抓取数据的API，注意我们使用的是docker部署的，所以得这么写。还需添加反向代理，
+8. 添加一个`Limit`节点，来限制抓取的数量，这里我们输入 2 个就行
+9. 再添加一个`Loop Over Items`，来处理循环，这里我们每次循环只处理一个`url`，`Batch Size`输入 1 即可。
+10. 将循环的一个处理节点换成`HTTP Request`，换成`Post`请求，地址换成：`http://host.docker.internal:11235/crawl`，这是我们使用 docker 部署的 crawl4ai 提供的抓取数据的 API，注意我们使用的是 docker 部署的，所以得这么写。还需添加反向代理，
 11. ![image-20250914174415001](../../public/image-20250914174415001.png)
 
 ![image-20250914174432844](../../public/image-20250914174432844.png)
 
-还得打开下面的`Send Body`开关，消息体需要2个字段，一个是`urls`一个是`priority`
+还得打开下面的`Send Body`开关，消息体需要 2 个字段，一个是`urls`一个是`priority`
 
 ![image-20250914174636289](../../public/image-20250914174636289.png)
 
 这里的返回结果是一个`task_id`，我们现在配置的只是创建了一个抓取任务，真正去执行抓取任务的还得另外配置。
 
-最后我们再添加一个`wait`节点，输入等待的7秒，这是为了让我们每次抓取数据之前等待几秒，防止对方网站触发风控。
-
-
+最后我们再添加一个`wait`节点，输入等待的 7 秒，这是为了让我们每次抓取数据之前等待几秒，防止对方网站触发风控。
 
 最后在添加一个`HTTP Request`节点，最终就是调用`crawl4ai`的抓取接口来执行抓取任务返回结果。
 
-输入链接为：`http://host.docker.internal:11235/task/{{$json.task_id}}`
+输入链接为：`http://host.docker.internal:11235/task/{{ 变量获取的任务id }}`
+
+> 这里因为`mdc`编译问题，导致对应的任务 id 可能不能以英文形式展现。
 
 这里的`task_id`也就是前面步骤获取到的`task_id`,请求验证方式和前面一样。
 
@@ -181,7 +147,7 @@ docker run -it --rm --name n8n -p 5678:5678 -v n8n_data:/home/node/.n8n -v ~/Dow
 
 添加`if`节点之后，可以直接拖拽左侧`status`过来，然后`is equal to`，右侧填写`completed`来进行测试。
 
-`if`节点会返回2个选项，一个是`true`，一个是`false`，我们再返回`true`的节点后面添加一个`AI Agent`
+`if`节点会返回 2 个选项，一个是`true`，一个是`false`，我们再返回`true`的节点后面添加一个`AI Agent`
 
 这里我们选择`Define below`，输入以下提示词：
 
@@ -190,22 +156,19 @@ docker run -it --rm --name n8n -p 5678:5678 -v n8n_data:/home/node/.n8n -v ~/Dow
 你是一名信息结构化和知识库开发的专家，请始终保持专业态度。你的任务是将 markdown 数据整理为适合 LLM 驱动的 RAG 知识库的结构化、易读格式。
 
 任务要求：
+
 1. 内容解析：
-	- 识别 markdown 数据中的关键内容和主要结构
-	
+   - 识别 markdown 数据中的关键内容和主要结构
 2. 结构化整理
-	- 以清晰的标题和分层逻辑组织信息，使其易于检索和理解
-	- 保留所有可能对回答用户查询有价值的细节
-	
+   - 以清晰的标题和分层逻辑组织信息，使其易于检索和理解
+   - 保留所有可能对回答用户查询有价值的细节
 3. 创建 FAQ (如适用)
-	- 根据内容提炼出常见问题，并提供清晰、直接的解答
-	
+   - 根据内容提炼出常见问题，并提供清晰、直接的解答
 4. 提升可读性
-	- 采用项目符号、编号列表、段落分隔等格式化排版，使内容更直观
-	
+   - 采用项目符号、编号列表、段落分隔等格式化排版，使内容更直观
 5. 优化输出
-	- 严格去除 AI 生成的附加说明，仅保留清理后的核心数据
-	
+   - 严格去除 AI 生成的附加说明，仅保留清理后的核心数据
+
 响应规则：
 
 1. 完整性：确保所有相关信息完整保留，避免丢失对搜索和理解有价值的内容
@@ -236,17 +199,17 @@ docker run -it --rm --name n8n -p 5678:5678 -v n8n_data:/home/node/.n8n -v ~/Dow
 
 ![image-20250914182127334](../../public/image-20250914182127334.png)
 
-
-
 ## 最终内容
 
 ````markdown
 # Crawl4AI Documentation
 
 ## Overview
+
 Crawl4AI is an open-source LLM-friendly web crawler and scraper designed for AI-ready web crawling tailored for large language models, AI agents, and data pipelines.
 
 ## Key Features
+
 - **Clean Markdown Generation**: Perfect for RAG pipelines or direct LLM ingestion
 - **Structured Extraction**: CSS, XPath, or LLM-based pattern parsing
 - **Advanced Browser Control**: Hooks, proxies, stealth modes, session re-use
@@ -256,16 +219,19 @@ Crawl4AI is an open-source LLM-friendly web crawler and scraper designed for AI-
 ## Core Components
 
 ### Installation & Setup
+
 - **Installation**: Available via pip or Docker
 - **Docker Deployment**: Containerized deployment options
 
 ### Crawling Methods
+
 - **Simple Crawling**: Basic single-page crawling
 - **Deep Crawling**: Comprehensive multi-page crawling
 - **Adaptive Crawling**: Intelligent crawling with information foraging algorithms
 - **URL Seeding**: Custom URL starting points
 
 ### Technical Features
+
 - **C4A-Script**: Custom scripting capabilities
 - **Browser/Crawler/LLM Config**: Fine-grained configuration control
 - **Markdown Generation**: Content conversion to markdown format
@@ -277,6 +243,7 @@ Crawl4AI is an open-source LLM-friendly web crawler and scraper designed for AI-
 - **Link & Media Handling**: Comprehensive asset management
 
 ### Advanced Features
+
 - **Adaptive Strategies**: Intelligent crawling decisions
 - **Virtual Scroll**: Handling infinite scroll pages
 - **File Downloading**: Asset download capabilities
@@ -293,6 +260,7 @@ Crawl4AI is an open-source LLM-friendly web crawler and scraper designed for AI-
 - **PDF Parsing**: Document processing capabilities
 
 ### Extraction Strategies
+
 - **LLM-Free Strategies**: Traditional extraction methods
 - **LLM Strategies**: AI-powered extraction approaches
 - **Clustering Strategies**: Content grouping techniques
@@ -313,12 +281,14 @@ asyncio.run(main())
 ```
 
 ## Support Options
+
 - **GitHub**: Star, fork, or file issues on the repository
 - **Discord**: Join community discussions
 - **Contributions**: Pull requests welcome for fixes and features
 - **Documentation**: Improve documentation through contributions
 
 ## Quick Links
+
 - [GitHub Repository](https://github.com/unclecode/crawl4ai)
 - [Installation Guide](core/installation/)
 - [API Reference](api/async-webcrawler/)
@@ -357,15 +327,11 @@ A: Yes, the project welcomes contributions through pull requests, issue reportin
 A: Python is the primary language for using and contributing to Crawl4AI.
 ````
 
-
-
 ## 上面的操作还只是保留在容器内部，我们需要一个节点写入到磁盘中
 
 添加`Read/Write to disk`，设置文件名：`/home/node/{{ $('AI Agent').item.json.output.split('\n')[0] }}.md`
 
 因为我们`n8n`是通过`docker`容器启动的，映射到本地文件路径/`Downloads/md`下，所以要填写容器内部的地址前缀。
-
-
 
 ## my workflow json
 
@@ -379,10 +345,7 @@ A: Python is the primary language for using and contributing to Crawl4AI.
       },
       "type": "@n8n/n8n-nodes-langchain.chatTrigger",
       "typeVersion": 1.3,
-      "position": [
-        -944,
-        -128
-      ],
+      "position": [-944, -128],
       "id": "fb413867-055f-44db-85bc-4565f64f5388",
       "name": "When chat message received",
       "webhookId": "9f595d89-bf70-4306-b0a2-74dcca651e43"
@@ -394,10 +357,7 @@ A: Python is the primary language for using and contributing to Crawl4AI.
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [
-        -736,
-        -128
-      ],
+      "position": [-736, -128],
       "id": "a4e15e4e-85e2-4eb9-b354-631be57a107e",
       "name": "HTTP Request"
     },
@@ -407,10 +367,7 @@ A: Python is the primary language for using and contributing to Crawl4AI.
       },
       "type": "n8n-nodes-base.xml",
       "typeVersion": 1,
-      "position": [
-        -528,
-        -128
-      ],
+      "position": [-528, -128],
       "id": "0a5ce195-fae3-4f0e-8199-047fa11b82fa",
       "name": "XML"
     },
@@ -421,10 +378,7 @@ A: Python is the primary language for using and contributing to Crawl4AI.
       },
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
-      "position": [
-        -320,
-        -128
-      ],
+      "position": [-320, -128],
       "id": "ffb5ad33-7d5c-488b-bd31-5ce586b8d3ac",
       "name": "Split Out"
     },
@@ -434,10 +388,7 @@ A: Python is the primary language for using and contributing to Crawl4AI.
       },
       "type": "n8n-nodes-base.limit",
       "typeVersion": 1,
-      "position": [
-        -112,
-        -128
-      ],
+      "position": [-112, -128],
       "id": "8c6d0ccd-333e-4d6f-a3e5-5231e94e4b9c",
       "name": "Limit"
     },
@@ -447,10 +398,7 @@ A: Python is the primary language for using and contributing to Crawl4AI.
       },
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
-      "position": [
-        96,
-        -128
-      ],
+      "position": [96, -128],
       "id": "e9bf6aee-b1e6-491a-ae6c-d0d40733df57",
       "name": "Loop Over Items"
     },
@@ -477,10 +425,7 @@ A: Python is the primary language for using and contributing to Crawl4AI.
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [
-        352,
-        -96
-      ],
+      "position": [352, -96],
       "id": "af597253-6c8c-4e7b-a23d-a14d9d35a69c",
       "name": "HTTP Request1",
       "credentials": {
@@ -496,27 +441,21 @@ A: Python is the primary language for using and contributing to Crawl4AI.
       },
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
-      "position": [
-        560,
-        -160
-      ],
+      "position": [560, -160],
       "id": "1eeb5736-24c1-49e7-8aad-0f8a71b2d014",
       "name": "Wait",
       "webhookId": "3453b908-cc4e-44f3-9091-8431a83ebbad"
     },
     {
       "parameters": {
-        "url": "=http://host.docker.internal:11235/task/{{ $json.task_id }}",
+        "url": "=http://host.docker.internal:11235/task/{{ 任务id }}",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpHeaderAuth",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [
-        768,
-        -160
-      ],
+      "position": [768, -160],
       "id": "e980b1b9-25c5-499a-8995-51c61c51a44c",
       "name": "HTTP Request2",
       "credentials": {
@@ -553,10 +492,7 @@ A: Python is the primary language for using and contributing to Crawl4AI.
       },
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
-      "position": [
-        976,
-        -160
-      ],
+      "position": [976, -160],
       "id": "8d82ff08-a04a-4595-8da7-38d39254b9ef",
       "name": "If"
     },
@@ -568,10 +504,7 @@ A: Python is the primary language for using and contributing to Crawl4AI.
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2.2,
-      "position": [
-        1184,
-        -256
-      ],
+      "position": [1184, -256],
       "id": "3f83ca09-b641-43aa-b87c-2024d6b4f930",
       "name": "AI Agent"
     },
@@ -581,10 +514,7 @@ A: Python is the primary language for using and contributing to Crawl4AI.
       },
       "type": "@n8n/n8n-nodes-langchain.lmChatDeepSeek",
       "typeVersion": 1,
-      "position": [
-        1152,
-        -16
-      ],
+      "position": [1152, -16],
       "id": "49426a87-01db-4aed-a24e-1fff4c864bc9",
       "name": "DeepSeek Chat Model",
       "credentials": {
@@ -610,10 +540,7 @@ A: Python is the primary language for using and contributing to Crawl4AI.
       },
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
-      "position": [
-        928,
-        144
-      ],
+      "position": [928, 144],
       "id": "46e52f16-8ed8-4091-b9b2-d6ae9f48f43d",
       "name": "Edit Fields"
     },
@@ -627,10 +554,7 @@ A: Python is the primary language for using and contributing to Crawl4AI.
       },
       "type": "n8n-nodes-base.convertToFile",
       "typeVersion": 1.1,
-      "position": [
-        1472,
-        -256
-      ],
+      "position": [1472, -256],
       "id": "b74ace87-feff-4fb3-bf4d-1e413557e63a",
       "name": "Convert to File"
     },
@@ -642,10 +566,7 @@ A: Python is the primary language for using and contributing to Crawl4AI.
       },
       "type": "n8n-nodes-base.readWriteFile",
       "typeVersion": 1,
-      "position": [
-        1632,
-        -256
-      ],
+      "position": [1632, -256],
       "id": "d6256b40-39c3-4f0f-99ba-98f5b5c1692e",
       "name": "Read/Write Files from Disk"
     }
@@ -833,8 +754,6 @@ A: Python is the primary language for using and contributing to Crawl4AI.
   "tags": []
 }
 ```
-
-
 
 ## 最终的一个摸样
 
