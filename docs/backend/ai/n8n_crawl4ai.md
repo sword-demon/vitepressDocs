@@ -184,7 +184,7 @@ docker run -it --rm --name n8n -p 5678:5678 -v n8n_data:/home/node/.n8n -v ~/Dow
 变成
 
 ```markdown
-<markdown>{{ $json.result.markdown }}</markdown>
+<markdown>{{ 美元符json.result.markdown }}</markdown>
 ```
 
 然后给`AI Agent`添加`chat model`，选择`DeepSeek`，输入对应的`API KEY`，选择`deepseek-chat`模型就足够了。
@@ -329,7 +329,7 @@ A: Python is the primary language for using and contributing to Crawl4AI.
 
 ## 上面的操作还只是保留在容器内部，我们需要一个节点写入到磁盘中
 
-添加`Read/Write to disk`，设置文件名：`/home/node/{{ $('AI Agent').item.json.output.split('\n')[0] }}.md`
+添加`Read/Write to disk`，设置文件名：`/home/node/{{ 美元符('AI Agent').item.json.output.split('\n')[0] }}.md`
 
 因为我们`n8n`是通过`docker`容器启动的，映射到本地文件路径/`Downloads/md`下，所以要填写容器内部的地址前缀。
 
@@ -352,7 +352,7 @@ A: Python is the primary language for using and contributing to Crawl4AI.
     },
     {
       "parameters": {
-        "url": "={{ $json.chatInput }}",
+        "url": "={{ 美元符json.chatInput }}",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
@@ -413,7 +413,7 @@ A: Python is the primary language for using and contributing to Crawl4AI.
           "parameters": [
             {
               "name": "urls",
-              "value": "={{ $json.loc }}"
+              "value": "={{ 美元符json.loc }}"
             },
             {
               "name": "priority",
@@ -477,7 +477,7 @@ A: Python is the primary language for using and contributing to Crawl4AI.
           "conditions": [
             {
               "id": "9b377858-726c-409d-812f-92e6e2d4b6a4",
-              "leftValue": "={{ $json.status }}",
+              "leftValue": "={{ 美元符json.status }}",
               "rightValue": "completed",
               "operator": {
                 "type": "string",
@@ -499,7 +499,7 @@ A: Python is the primary language for using and contributing to Crawl4AI.
     {
       "parameters": {
         "promptType": "define",
-        "text": "=角色设定：\n你是一名信息结构化和知识库开发的专家，请始终保持专业态度。你的任务是将 markdown 数据整理为适合 LLM 驱动的 RAG 知识库的结构化、易读格式。\n\n任务要求：\n1. 内容解析：\n\t- 识别 markdown 数据中的关键内容和主要结构\n\t\n2. 结构化整理\n\t- 以清晰的标题和分层逻辑组织信息，使其易于检索和理解\n\t- 保留所有可能对回答用户查询有价值的细节\n\t\n3. 创建 FAQ (如适用)\n\t- 根据内容提炼出常见问题，并提供清晰、直接的解答\n\t\n4. 提升可读性\n\t- 采用项目符号、编号列表、段落分隔等格式化排版，使内容更直观\n\t\n5. 优化输出\n\t- 严格去除 AI 生成的附加说明，仅保留清理后的核心数据\n\t\n响应规则：\n\n1. 完整性：确保所有相关信息完整保留，避免丢失对搜索和理解有价值的内容\n2. 精准性：FAQ 需紧密围绕内容，确保清晰、简洁且符合用户需求\n3. 结构优化：确保最终输出便于分块存储、向量化处理，并支持高效检索\n\n数据输入：\n<markdown>{{ $json.result.markdown }}</markdown>",
+        "text": "=角色设定：\n你是一名信息结构化和知识库开发的专家，请始终保持专业态度。你的任务是将 markdown 数据整理为适合 LLM 驱动的 RAG 知识库的结构化、易读格式。\n\n任务要求：\n1. 内容解析：\n\t- 识别 markdown 数据中的关键内容和主要结构\n\t\n2. 结构化整理\n\t- 以清晰的标题和分层逻辑组织信息，使其易于检索和理解\n\t- 保留所有可能对回答用户查询有价值的细节\n\t\n3. 创建 FAQ (如适用)\n\t- 根据内容提炼出常见问题，并提供清晰、直接的解答\n\t\n4. 提升可读性\n\t- 采用项目符号、编号列表、段落分隔等格式化排版，使内容更直观\n\t\n5. 优化输出\n\t- 严格去除 AI 生成的附加说明，仅保留清理后的核心数据\n\t\n响应规则：\n\n1. 完整性：确保所有相关信息完整保留，避免丢失对搜索和理解有价值的内容\n2. 精准性：FAQ 需紧密围绕内容，确保清晰、简洁且符合用户需求\n3. 结构优化：确保最终输出便于分块存储、向量化处理，并支持高效检索\n\n数据输入：\n<markdown>{{ 美元符json.result.markdown }}</markdown>",
         "options": {}
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
@@ -531,7 +531,7 @@ A: Python is the primary language for using and contributing to Crawl4AI.
             {
               "id": "da8f744c-1fb9-4caf-93ad-19604faaa463",
               "name": "task_id",
-              "value": "={{ $('HTTP Request1').item.json.task_id }}",
+              "value": "={{ 美元符('HTTP Request1').item.json.task_id }}",
               "type": "string"
             }
           ]
@@ -549,7 +549,7 @@ A: Python is the primary language for using and contributing to Crawl4AI.
         "operation": "toText",
         "sourceProperty": "output",
         "options": {
-          "fileName": "={{ $json.output.split('\\n')[0] }}.md"
+          "fileName": "={{ 美元符json.output.split('\\n')[0] }}.md"
         }
       },
       "type": "n8n-nodes-base.convertToFile",
@@ -561,7 +561,7 @@ A: Python is the primary language for using and contributing to Crawl4AI.
     {
       "parameters": {
         "operation": "write",
-        "fileName": "=/home/node/{{ $now.toMillis() }}.md",
+        "fileName": "=/home/node/{{ 美元符now.toMillis() }}.md",
         "options": {}
       },
       "type": "n8n-nodes-base.readWriteFile",
