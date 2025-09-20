@@ -127,7 +127,10 @@ defineConfig({
         },
         {
           text: "React框架",
-          items: [{ text: "Next.js 学习", link: "/front/React/Nextjs" }],
+          items: [
+            { text: "Next.js 学习", link: "/front/React/Nextjs" },
+            { text: "React Native学习", link: "/front/React/react_native" },
+          ],
         },
         { text: "Vue3", collapsed: false, items: [] },
         {
@@ -178,6 +181,7 @@ defineConfig({
               link: "/backend/ai/cursor_zhihu_chrome_extension",
             },
             { text: "n8n+crawl4ai", link: "/backend/ai/n8n_crawl4ai" },
+            { text: "flutter_ai_agent", link: "/backend/ai/flutter_ai_word" },
           ],
         },
         {
