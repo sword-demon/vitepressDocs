@@ -35,3 +35,8 @@ npm install
 现在初始化完项目应该都是安装完了的，下面开始安装原生依赖。
 
 可以使用`Android Studio`打开新建的项目的里面的`android`目录，进行安装一些依赖。
+
+然后使用`npm run android`启动
+
+![image-20250920121949968](../../public/image-20250920121949968.png)
+

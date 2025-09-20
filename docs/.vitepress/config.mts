@@ -182,6 +182,14 @@ defineConfig({
             },
             { text: "n8n+crawl4ai", link: "/backend/ai/n8n_crawl4ai" },
             { text: "flutter_ai_agent", link: "/backend/ai/flutter_ai_word" },
+            {
+              text: "claude code 通用提示词",
+              link: "/backend/ai/claude_code_common",
+            },
+            {
+              text: "PM Agent 提示词",
+              link: "/backend/ai/pm_agent",
+            },
           ],
         },
         {
@@ -205,6 +213,16 @@ defineConfig({
               items: [
                 { text: "幂等问题", link: "/backend/go/notification/mideng" },
               ],
+            },
+          ],
+        },
+        {
+          text: "Rust",
+          collapsed: false,
+          items: [
+            {
+              text: "Rust项目模板",
+              link: "/backend/rust/template",
             },
           ],
         },
