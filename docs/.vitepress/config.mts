@@ -247,12 +247,7 @@ defineConfig({
         {
           text: "Rust",
           collapsed: false,
-          items: [
-            {
-              text: "Rust项目模板",
-              link: "/backend/rust/template",
-            },
-          ],
+          items: [],
         },
         {
           text: "Java",
