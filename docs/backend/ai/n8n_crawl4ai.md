@@ -45,6 +45,16 @@ INFO:     192.168.215.1:53119 - "GET /mkdocs/ HTTP/1.1" 200 OK
 ```bash
 docker volume create n8n_data
 docker run -it --rm --name n8n -p 5678:5678 -v n8n_data:/home/node/.n8n -v ~/Downloads/md:/home/node -e N8N_COMMUNITY_PACKAGES_ALLOW_TOOL_USAGE=true docker.n8n.io/n8nio/n8n
+
+docker run -it --rm --name n8n -p 5678:5678 -v n8n_data:/home/node/.n8n n8nio/n8n
+
+docker run -it -d \
+	--name n8n \
+  -p 5678:5678 \
+  -v n8n_data:/home/node/.n8n \
+  -e N8N_SECURE_COOKIE=false \
+  n8nio/n8n
+
 ```
 
 ## 搭建工作
@@ -763,3 +773,24 @@ A: Python is the primary language for using and contributing to Crawl4AI.
 
 - 因为对应的任务 id，不能直接写出来，所以使用中文替换，不然`vercel`部署不通过
 - 因为美元符号和 2 个大括号读取变量的问题，也是`vercel`问题，所以这里使用中文描述，使用的时候进行替换
+
+
+
+
+
+```shell
+curl -X POST "https://api.kie.ai/api/v1/jobs/createTask" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer 188b155ad1c5f35d26ab5de23f5536d8" \
+  -d '{
+    "model": "sora-2-text-to-video",
+    "callBackUrl": "https://your-domain.com/api/callback",
+    "input": {
+      "prompt": "A professor stands at the front of a lively classroom, enthusiastically giving a lecture. On the blackboard behind him are colorful chalk diagrams. With an animated gesture, he declares to the students: “Sora 2 is now available on Kie AI, making it easier than ever to create stunning videos.” The students listen attentively, some smiling and taking notes.",
+      "aspect_ratio": "landscape",
+      "n_frames": "10",
+      "remove_watermark": true
+    }
+}'
+```
+

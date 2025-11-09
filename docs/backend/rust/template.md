@@ -28,7 +28,11 @@
 cargo install cargo-generate
 ```
 
+最终可以使用一个我的`fork`之后修改的模版
 
+```bash
+cargo generate sword-demon/template
+```
 
 ## 安装 pre-commit
 
@@ -40,6 +44,11 @@ pip3 install pre-commit
 ```
 
 > 还需要在你的新项目里使用`pre-commit install`一下，才能放到对应的`.git`文件夹里生效。
+
+```bash
+> pre-commit install
+pre-commit installed at .git/hooks/pre-commit
+```
 
 ## 安装 Cargo deny
 
@@ -120,4 +129,81 @@ cat ~/.cargo/config.toml
 target-dir = "/Users/wxvirus/.target"
 #rustc-wrapper = "/Users/wxvirus/.cargo/bin/sccache"
 ```
+
+## deny.toml
+
+```toml
+allow = [
+  "MIT",
+  "Apache-2.0",
+  "Unicode-DFS-2016",
+  "MPL-2.0",
+  "BSD-2-Clause",
+  "BSD-3-Clause",
+  "ISC",
+  "CC0-1.0",
+]
+```
+
+这里是允许的授权是对于商业软件可用的，如果编译过程中有哪个`license`没有授权的话可以添加到里面。
+
+
+
+## Code review的时候我们应该做什么？
+
+- 架构
+- 接口设计
+- 代码质量：最佳实践、可读性、性能、安全性
+- 错误处理
+- 可维护性：DRYI、KISS、SOLID，文档
+- 团队特定的实践
+
+
+
+## 词汇表
+
+- struct/structure：结构体
+- enum：枚举
+- variable：变量
+- constant：常量
+- static：静态变量
+- function：函数
+- method：方法
+- generics：泛型
+- trait：特征、特质
+- trait bound：特征约束、trait约束
+
+
+
+## Y分钟速成Rust
+
+网址：https://learnxinyminutes.com/zh-cn/rust/
+
+
+
+## !
+
+是一个宏调用，在编译的时候会展开成一串代码
+
+```rust
+#[macro_export]
+#[stable(feature = "rust1", since = "1.0.0")]
+#[cfg_attr(not(test), rustc_diagnostic_item = "println_macro")]
+#[allow_internal_unstable(print_internals, format_args_nl)]
+macro_rules! println {
+    () => {
+        $crate::print!("\n")
+    };
+    ($($arg:tt)*) => {{
+        $crate::io::_print($crate::format_args_nl!($($arg)*));
+    }};
+}
+```
+
+
+
+## {}和{:?}
+
+- `{}`前者对应的是`display trait`
+- 后者对应的是`debug trait`
 

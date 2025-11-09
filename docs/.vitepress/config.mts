@@ -190,6 +190,34 @@ defineConfig({
               text: "PM Agent 提示词",
               link: "/backend/ai/pm_agent",
             },
+            {
+              text: "agent remind code",
+              link: "/backend/ai/agent_remind_code",
+            },
+            {
+              text: "ai archi",
+              link: "/backend/ai/ai_archi",
+            },
+            {
+              text: "ai camera",
+              link: "/backend/ai/ai-camera-words",
+            },
+            {
+              text: "ai工具",
+              link: "/backend/ai/ai-tools",
+            },
+            {
+              text: "animal video",
+              link: "/backend/ai/animal_video",
+            },
+            {
+              text: "n8n crawl4ai",
+              link: "/backend/ai/n8n_crawl4ai",
+            },
+            {
+              text: "n8n title card",
+              link: "/backend/ai/n8n_title_card",
+            },
           ],
         },
         {
